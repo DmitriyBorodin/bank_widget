@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "kr3"
+version = "0.1.0"
+description = "Курсовая работа №3 Бородина Дмитрия"
+authors = ["Бородин Д.А."]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
