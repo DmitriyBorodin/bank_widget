@@ -1,20 +1,17 @@
 import json
 from datetime import datetime
-data_file = 'utils/operations.json'
 
 
-def get_executed_operations(filename):
+def get_executed_operations(operations):
     """
     Возвращает список словарей с операциями, имеющими статус EXECUTED
     """
-    with open(data_file, encoding='utf-8') as file:
-        operations = json.load(file)
 
-        executed_operations = []
+    executed_operations = []
 
-        for operation in operations:
-            if operation.get('state') == 'EXECUTED':
-                executed_operations.append(operation)
+    for operation in operations:
+        if operation.get('state') == 'EXECUTED':
+            executed_operations.append(operation)
 
     return executed_operations
 
@@ -67,14 +64,14 @@ def format_the_operation(raw_operation):
             f"{raw_operation['operationAmount']['amount']} {raw_operation['operationAmount']['currency']['name']}\n")
 
 
-def print_five_last_operations():
-    """
-    Эта функция просто берёт и выводит 5 последних опеаций
-    :return:
-    """
-    operations = sort_operations_by_date(get_executed_operations(data_file))
-    for operation in range(5):
-        print(format_the_operation(operations[operation]))
+# def print_five_last_operations():
+#     """
+#     Эта функция просто берёт и выводит 5 последних опеаций
+#     :return:
+#     """
+#     operations = sort_operations_by_date(get_executed_operations(data_file))
+#     for operation in range(5):
+#         print(format_the_operation(operations[operation]))
 
 
 def print_n_last_operations(operations_list, n=5):
