@@ -8,16 +8,15 @@ def get_executed_operations(filename):
     Возвращает список словарей с операциями, имеющими статус EXECUTED
     """
     with open(data_file, encoding='utf-8') as file:
-        data = json.load(file)
+        operations = json.load(file)
 
-        result = []
+        executed_operations = []
 
-        for i in data:
-            if i:
-                if i['state'] == 'EXECUTED':
-                    result.append(i)
+        for operation in operations:
+            if operation.get('state') == 'EXECUTED':
+                executed_operations.append(operation)
 
-    return result
+    return executed_operations
 
 
 def sort_operations_by_date(list_of_operations):
@@ -61,7 +60,7 @@ def format_the_operation(raw_operation):
     if raw_operation.get('from'):
         second_line = f"{from_} -> {to_}"
     else:
-        second_line = f"{to_}"
+        second_line = to_
 
     return (f"{date} {raw_operation['description']}\n"
             f"{second_line}\n"
@@ -82,9 +81,6 @@ def print_n_last_operations(operations_list, n=5):
     """
     Для работы этой функции нужно передать в неё список операций и, опционально, количество опепаций которые нужно
     вывести
-    :param operations_list:
-    :param n:
-    :return:
     """
 
     for operation in range(n):
