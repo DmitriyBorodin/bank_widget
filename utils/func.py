@@ -49,7 +49,7 @@ def format_the_operation(raw_operation):
             to_.append(string)
         else:
             if len(string) == 16:
-                to_.append(string[:4] + ' ' + string[5:7] + '** **** ' + string[-4:])
+                to_.append(string[:4] + ' ' + string[4:6] + '** **** ' + string[-4:])
             else:
                 to_.append('**'+string[-4:])
     to_ = ' '.join(to_)
