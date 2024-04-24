@@ -38,7 +38,7 @@ def format_the_operation(raw_operation):
                 from_.append(string)
             else:
                 if len(string) == 16:
-                    from_.append(string[:4] + ' ' + string[5:7] + '** **** ' + string[-4:])
+                    from_.append(string[:4] + ' ' + string[4:6] + '** **** ' + string[-4:])
                 else:
                     from_.append('**'+string[-4:])
         from_ = ' '.join(from_)
