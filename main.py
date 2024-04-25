@@ -1,16 +1,17 @@
-# This is a sample Python script.
+from utils.func import *
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+data_file = 'data/operations.json'
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    with open(data_file, encoding='utf-8') as file:
+        operations = json.load(file)
+
+    executed_operations = get_executed_operations(operations)
+
+    # Первый вариант функции
+    print_n_last_operations(executed_operations)
+
+    # Второй вариант функции
+    # operations = sort_operations_by_date(get_executed_operations(data_file))
+    # print_n_last_operations(operations)
