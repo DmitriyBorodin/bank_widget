@@ -1,4 +1,6 @@
-from utils.func import *
+from utils.func import get_executed_operations
+from utils.func import sort_operations_by_date
+from utils.func import format_the_operation
 
 
 def test_get_executed_operations():
@@ -37,16 +39,16 @@ def test_format_the_operation():
         "state": "EXECUTED",
         "date": "2019-02-14T03:09:23.006652",
         "operationAmount": {
-          "amount": "47022.09",
-          "currency": {
-            "name": "руб.",
-            "code": "RUB"
-          }
+            "amount": "47022.09",
+            "currency": {
+                "name": "руб.",
+                "code": "RUB"
+            }
         },
         "description": "Перевод организации",
         "from": "Visa Classic 6216537926639975",
         "to": "Счет 67667879435628279708"
-        }
+    }
 
     assert format_the_operation(operation_card_to_account) == ("14.02.2019 Перевод организации\n"
                                                                "Visa Classic 6216 53** **** 9975 -> Счет **9708\n"
@@ -57,11 +59,11 @@ def test_format_the_operation():
         "state": "EXECUTED",
         "date": "2018-10-15T08:05:34.061711",
         "operationAmount": {
-          "amount": "51203.12",
-          "currency": {
-            "name": "USD",
-            "code": "USD"
-          }
+            "amount": "51203.12",
+            "currency": {
+                "name": "USD",
+                "code": "USD"
+            }
         },
         "description": "Перевод с карты на карту",
         "from": "MasterCard 1435442169918409",
@@ -69,7 +71,8 @@ def test_format_the_operation():
     }
 
     assert format_the_operation(operation_card_to_card) == ("15.10.2018 Перевод с карты на карту\n"
-                                                            "MasterCard 1435 44** **** 8409 -> Maestro 7452 40** **** 9235\n"
+                                                            "MasterCard 1435 44** **** 8409 -> Maestro 7452 40** **** "
+                                                            "9235\n"
                                                             "51203.12 USD\n")
 
     operation_account_creation = {
@@ -77,17 +80,16 @@ def test_format_the_operation():
         "state": "EXECUTED",
         "date": "2019-06-21T12:34:06.351022",
         "operationAmount": {
-          "amount": "25762.92",
-          "currency": {
-            "name": "руб.",
-            "code": "RUB"
-          }
+            "amount": "25762.92",
+            "currency": {
+                "name": "руб.",
+                "code": "RUB"
+            }
         },
         "description": "Открытие вклада",
         "to": "Счет 90817634362091276762"
-      }
+    }
 
     assert format_the_operation(operation_account_creation) == ("21.06.2019 Открытие вклада\n"
                                                                 "Счет **6762\n"
                                                                 "25762.92 руб.\n")
-

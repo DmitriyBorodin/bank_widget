@@ -1,6 +1,9 @@
-from utils.func import *
+import json
+from utils.func import get_executed_operations
+from utils.func import print_n_last_operations
 
 data_file = 'data/operations.json'
+
 
 if __name__ == '__main__':
 
