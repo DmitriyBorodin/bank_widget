@@ -12,7 +12,8 @@ def test_get_executed_operations():
         {"statetete": "EXECUTED"},
         {"state": "executed"}
     ]
-    assert get_executed_operations(operations) == [{"state": "EXECUTED"}, {"state": "EXECUTED"}]
+    assert get_executed_operations(operations) == [{"state": "EXECUTED"},
+                                                   {"state": "EXECUTED"}]
 
 
 def test_sort_operations_by_date():
@@ -50,9 +51,10 @@ def test_format_the_operation():
         "to": "Счет 67667879435628279708"
     }
 
-    assert format_the_operation(operation_card_to_account) == ("14.02.2019 Перевод организации\n"
-                                                               "Visa Classic 6216 53** **** 9975 -> Счет **9708\n"
-                                                               "47022.09 руб.\n")
+    assert (format_the_operation(operation_card_to_account) ==
+            ("14.02.2019 Перевод организации\n"
+             "Visa Classic 6216 53** **** 9975 -> Счет **9708\n"
+             "47022.09 руб.\n"))
 
     operation_card_to_card = {
         "id": 743278119,
@@ -70,10 +72,11 @@ def test_format_the_operation():
         "to": "Maestro 7452400219469235"
     }
 
-    assert format_the_operation(operation_card_to_card) == ("15.10.2018 Перевод с карты на карту\n"
-                                                            "MasterCard 1435 44** **** 8409 -> Maestro 7452 40** **** "
-                                                            "9235\n"
-                                                            "51203.12 USD\n")
+    assert (format_the_operation(operation_card_to_card) ==
+            ("15.10.2018 Перевод с карты на карту\n"
+             "MasterCard 1435 44** **** 8409 -> "
+             "Maestro 7452 40** **** ""9235\n"
+             "51203.12 USD\n"))
 
     operation_account_creation = {
         "id": 108066781,
@@ -90,6 +93,7 @@ def test_format_the_operation():
         "to": "Счет 90817634362091276762"
     }
 
-    assert format_the_operation(operation_account_creation) == ("21.06.2019 Открытие вклада\n"
-                                                                "Счет **6762\n"
-                                                                "25762.92 руб.\n")
+    assert (format_the_operation(operation_account_creation) ==
+            ("21.06.2019 Открытие вклада\n"
+             "Счет **6762\n"
+             "25762.92 руб.\n"))
