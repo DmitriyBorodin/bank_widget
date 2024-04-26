@@ -1,4 +1,3 @@
-import json
 from datetime import datetime
 
 
@@ -18,14 +17,16 @@ def get_executed_operations(operations):
 
 def sort_operations_by_date(list_of_operations):
     """
-    Принимает список операций, возвращает его отсортированным по датам где первый элемент - самая последняя операция
+    Принимает список операций, возвращает его отсортированным по датам где
+    первый элемент - самая последняя операция
     """
     return sorted(list_of_operations, key=lambda x: x['date'], reverse=True)
 
 
 def format_the_operation(raw_operation):
     """
-    Принимает опеацию в виде исходного словаря и возвращает в отформатированном виде
+    Принимает опеацию в виде исходного словаря и возвращает в
+    отформатированном виде
     """
 
     date = str(datetime.strptime(raw_operation['date'], '%Y-%m-%dT%H:%M:%S.%f'))[0:10]
@@ -61,7 +62,8 @@ def format_the_operation(raw_operation):
 
     return (f"{date} {raw_operation['description']}\n"
             f"{second_line}\n"
-            f"{raw_operation['operationAmount']['amount']} {raw_operation['operationAmount']['currency']['name']}\n")
+            f"{raw_operation['operationAmount']['amount']} "
+            f"{raw_operation['operationAmount']['currency']['name']}\n")
 
 
 # def print_five_last_operations():
@@ -73,11 +75,10 @@ def format_the_operation(raw_operation):
 #     for operation in range(5):
 #         print(format_the_operation(operations[operation]))
 
-
 def print_n_last_operations(operations_list, n=5):
     """
-    Для работы этой функции нужно передать в неё список операций и, опционально, количество опепаций которые нужно
-    вывести
+    Для работы этой функции нужно передать в неё список операций и,
+    опционально, количество опепаций которые нужно вывести
     """
 
     for operation in range(n):
